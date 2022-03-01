@@ -1,6 +1,5 @@
 const grid = document.querySelector('#grid');
-let sq = 64;
-
+let sq = 22;
 //functions number of squares
 function run (sq) {
     for (i=0;i<(sq*sq);i++) {
@@ -10,19 +9,18 @@ function run (sq) {
         squares.setAttribute('style', 'color: blue; background: white'); 
     }
 }
-
 //mouse over function
 let count = 0;
 window.addEventListener('mouseover', function(color) {
         if (color.target.className==='squares'){
-            count += 1; // squares completely black after 1000 pass overs
+            count += 1; // squares completely black after 500 pass overs
             const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
             let rN = randomBetween(0, 255);
-            let r = rN - (rN)/(1000/`${count}`);
+            let r = rN - (rN)/(500/`${count}`);
             let gN = randomBetween(0, 255);
-            let g = gN - (gN)/(1000/`${count}`);
+            let g = gN - (gN)/(500/`${count}`);
             let bN = randomBetween(0, 255);
-            let b = bN - (bN)/(1000/`${count}`);
+            let b = bN - (bN)/(500/`${count}`);
             let rgb = `rgb(${r},${g},${b})`; // Collect all to a css color string
             color.target.style.backgroundColor = rgb;
         }
@@ -34,7 +32,6 @@ window.addEventListener('click', function(e) {
             }
         });
     })
-
 run(sq);
 //user input number of squares per side
 function promptFunction(sq) {
@@ -48,7 +45,7 @@ function promptFunction(sq) {
 //updates flex basis through DOM
     const array = document.getElementsByClassName("squares");
     for (i=0;i<array.length;i++) {
-    document.getElementsByClassName("squares")[i].style.flexBasis = `calc(100%/${sq} - 0.5px)`;
+    document.getElementsByClassName("squares")[i].style.flexBasis = `calc(100%/${sq})`;
     }
 }
 // deletes intitial squares from grid
