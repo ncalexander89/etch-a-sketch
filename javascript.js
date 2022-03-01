@@ -1,5 +1,5 @@
 const grid = document.querySelector('#grid');
-let sq = 3;
+let sq = 64;
 
 //functions number of squares
 function run (sq) {
